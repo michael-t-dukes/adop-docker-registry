@@ -104,7 +104,8 @@ function Simple_Cert_Generator {
 }
 
 function Configure_Openssl {
-    PRIVATE_IP=$(ip addr | grep eth0 | awk '/inet / {sub(/\/.*/, "", $2); print $2}')
+    #PRIVATE_IP=$(ip addr | grep eth0 | awk '/inet / {sub(/\/.*/, "", $2); print $2}')
+    PRIVATE_IP=$BASE_HOST_IP
     sed -i -e "s/52.16.63.143/${REGISTRY_IP},IP:${PRIVATE_IP}/g" /etc/ssl/openssl.cnf
 
 }
